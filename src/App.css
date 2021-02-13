@@ -9,10 +9,13 @@
   height: 300px;
   width: 300px;
 }
-#places_details {
-  padding: 30px 2px;
+#hours_list {
+  list-style-type: none;
 }
-
+.name {
+  float: left;
+  padding: 20px 0;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

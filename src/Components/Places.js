@@ -41,25 +41,39 @@ function Places(props) {
       <br />
 
       <Grid container spacing={2} id="places_grid">
-        <Grid item xs={6} sm={6}>
+        <Grid item xs={4} sm={4}>
           <img id="img-logo" src={data.logo} alt="business logo" />
         </Grid>
-        <Grid item xs={6} sm={6} id="places_details">
-          <b>Name:</b>
-
-          {data.businessName}
+        <Grid item xs={4} sm={4} id="places_details">
+          <div className="name">
+            <b>Name:</b>
+            {data.businessName}
+          </div>
           <br></br>
 
-          <b>Address:</b>
-
-          {data.address}
+          <div className="name">
+            <b>Address:</b>
+            {data.address}
+          </div>
           <br></br>
 
-          <b>Website:</b>
-
-          {data.website}
+          <div className="name">
+            <b>Website:</b>
+            {data.website}
+          </div>
           <br></br>
-          {/* Hours: {data.hours} */}
+
+          <div>
+            {" "}
+            <br></br>
+          </div>
+
+          <div className="name">
+            <b>Hours:</b>
+            {Object.entries(data.hours)}
+            <br></br>
+          </div>
+          <br></br>
         </Grid>
       </Grid>
     </>
