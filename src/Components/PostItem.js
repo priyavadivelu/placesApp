@@ -15,16 +15,12 @@ export default class PostItem extends Component {
     super(props);
   }
 
-  handleBusinessClick(postId) {
-    postId = this.props.post.businessId;
-    this.props.history.push({ pathname: `/places/${postId}` });
-  }
-
   render() {
     console.log(this.props.post);
     const busi = this.props.post;
     return (
       <Grid container direction="column" alignItems="center" justify="center">
+        <h3>PLACES</h3>
         <TableContainer component={Paper}>
           <Table aria-label="simple table">
             <TableHead>
@@ -39,11 +35,10 @@ export default class PostItem extends Component {
               {busi.map((row) => (
                 <TableRow key={row.name}>
                   <TableCell align="left">{row.businessId}</TableCell>
-                  <TableCell
-                    align="left"
-                    onClick={() => this.handleBusinessClick(row.businessId)}
-                  >
-                    {row.businessName}
+                  <TableCell align="left">
+                    <Link to={`/places/${row.businessId}`}>
+                      {row.businessName}
+                    </Link>
                   </TableCell>
                   <TableCell align="left">{row.website}</TableCell>
                   <TableCell align="left">{row.address}</TableCell>
@@ -52,35 +47,6 @@ export default class PostItem extends Component {
             </TableBody>
           </Table>
         </TableContainer>
-
-        {/* <Card id="cards">
-          <CardContent>
-            <Typography color="textSecondary" gutterBottom>
-              <b>PLACES</b>
-            </Typography>
-            <br />
-            <div className="postTitle">
-              <span>
-                <b>Business Name:</b>
-              </span>
-              {this.props.post.businessName}
-            </div>
-            <br />
-            <div className="postBody">
-              <span>
-                <b>Website:</b>
-              </span>
-              {this.props.post.website}
-            </div>
-            <div className="postBody">
-              <span>
-                <b>Address:</b>
-              </span>
-              {this.props.post.address}
-            </div>
-          </CardContent>
-          <br />
-        </Card> */}
       </Grid>
     );
   }

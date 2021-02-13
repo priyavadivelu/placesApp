@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import PostItem from "./PostItem.js";
-import Typography from "@material-ui/core/Typography";
 
 class MainPage extends Component {
   constructor(props) {
@@ -32,6 +31,7 @@ class MainPage extends Component {
               businessName: post.name,
               website: post.website_url,
               address: post.address,
+              logo: post.logo_url,
             };
           });
 
@@ -54,11 +54,6 @@ class MainPage extends Component {
       } else {
         return (
           this.state.posts && (
-            // <div className="posts-div" style={{ width: "100%", maxWidth: 900 }}>
-            //   {this.state.posts.map((post) => (
-            //     <PostItem key={`post_${post.id}`} post={post} />
-            //   ))}
-            // </div>
             <div style={{ width: "100%", maxWidth: 1000 }}>
               <PostItem post={this.state.posts} />
             </div>

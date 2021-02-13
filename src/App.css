@@ -2,14 +2,9 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-#cards {
-  border-style: solid;
-  border-color: chocolate;
+#logo_img {
+  height: 100px;
+  width: 100px;
 }
 
 @keyframes App-logo-spin {
