@@ -36,7 +36,12 @@ export default class PostItem extends Component {
                 <TableRow key={row.name}>
                   <TableCell align="left">{row.businessId}</TableCell>
                   <TableCell align="left">
-                    <Link to={`/places/${row.businessId}`}>
+                    <Link
+                      to={{
+                        pathname: `/places/${row.businessId}`,
+                        state: { data: row },
+                      }}
+                    >
                       {row.businessName}
                     </Link>
                   </TableCell>

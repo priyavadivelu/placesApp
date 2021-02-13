@@ -32,6 +32,7 @@ class MainPage extends Component {
               website: post.website_url,
               address: post.address,
               logo: post.logo_url,
+              hours: post.hours,
             };
           });
 

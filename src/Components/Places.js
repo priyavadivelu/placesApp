@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import { Link, Router } from "react-router-dom";
-import Grid from "@material-ui/core/Grid";
+import { useEffect } from "react";
 
 function Places(props) {
   //   const displayPhotos = () => {
@@ -24,10 +24,34 @@ function Places(props) {
   //       {displayPhotos()}
   //     </Grid>
   //   );
+  const {
+    location: {
+      state: { data },
+    },
+  } = props;
+
+  useEffect(() => {
+    console.log({ data });
+  }, []);
+
   return (
-    <div>
+    <>
       <Link to="/">Back to home</Link>
-    </div>
+      <br />
+      <div className="places-container">
+        <section id="logo_img">
+          <img src={data.logo} alt="business logo" />
+        </section>
+        Name: {data.businessName}
+        <br></br>
+        Address:{data.address}
+        <br></br>
+        Website: {data.website}
+        <br></br>
+        Hours: {data.hours}
+        <br></br>
+      </div>
+    </>
   );
 }
 
