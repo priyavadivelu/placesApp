@@ -1,20 +1,14 @@
 import React from "react";
 import "../App.css";
 import Grid from "@material-ui/core/Grid";
-import { Link, Router } from "react-router-dom";
-import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Places(props) {
- 
   const {
     location: {
       state: { data },
     },
   } = props;
-
-  useEffect(() => {
-    console.log({ data });
-  }, []);
 
   return (
     <>
@@ -23,38 +17,46 @@ function Places(props) {
 
       <Grid container spacing={2} id="places_grid">
         <Grid item xs={4} sm={4}>
-          <img id="img-logo" src={data.logo} alt="business logo" />
+          <img id="img-logo" src={data.logo_url} alt="business logo" />
         </Grid>
         <Grid item xs={5} sm={5} id="places_details">
-          <div className="name">
-            <b>Name:</b>
-            {data.businessName}
-          </div>
-          <br></br>
+          <Grid
+            container
+            direction="column"
+            justify="flex-start"
+            alignItems="flex-start"
+          >
+            <div className="name">
+              <b>Name:</b>
+              {data.name}
+            </div>
 
-          <div className="name">
-            <b>Address:</b>
-            {data.address}
-          </div>
-          <br></br>
+            <div className="name">
+              <b>Address:</b>
+              {data.address}
+            </div>
 
-          <div className="name">
-            <b>Website:</b>
-            {data.website}
-          </div>
-          <br></br>
+            <div className="name">
+              <b>Website:</b>
+              {data.website_url}
+            </div>
 
-          <div>
-            {" "}
-            <br></br>
-          </div>
-
-          <div className="name">
-            <b>Hours:</b>
-            {Object.entries(data.hours)}
-            <br></br>
-          </div>
-          <br></br>
+            <div className="name">
+              <b>Hours:</b>
+              {
+                <ul>
+                  {Object.entries(data.hours).map(function (keyName, keyValue) {
+                    return (
+                      <li key={keyName}>
+                        {keyName}
+                        {keyValue}
+                      </li>
+                    );
+                  })}
+                </ul>
+              }
+            </div>
+          </Grid>
         </Grid>
       </Grid>
     </>

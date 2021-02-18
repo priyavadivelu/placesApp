@@ -8,44 +8,24 @@ class MainPage extends Component {
     super(props);
     this.state = {
       isDataLoading: true,
-      posts: [],
+      businesses: [],
     };
-    this.postsLoadPromise = Promise.resolve();
   }
 
   componentDidMount() {
-    this.postsLoadPromise = this.loadPosts();
-  }
-
-  loadPosts() {
     fetch("https://6025865136244d001797c552.mockapi.io/api/v1/places")
-      .then((response) => {
-        if (response.status !== 200) {
-          console.log("Problem status is" + response.status);
-        }
-
-        response.json().then((data) => {
-          let posts = data.map((post) => {
-            return {
-              businessId: post.id,
-              businessName: post.name,
-              website: post.website_url,
-              address: post.address,
-              logo: post.logo_url,
-              hours: post.hours,
-            };
-          });
-
-          this.setState({ isDataLoading: false, posts });
-        });
+      .then((response) => response.json())
+      .then((result) => {
+        this.setState({ businesses: result, isDataLoading: false });
       })
       .catch((e) => {
-        console.log("Error in API Fetch Data");
+        console.log(e);
+        this.setState({ ...this.state, isDataLoading: false });
       });
   }
 
   render() {
-    const posts = () => {
+    const busiItems = () => {
       if (this.state.isDataLoading) {
         return (
           <Grid item>
@@ -54,9 +34,9 @@ class MainPage extends Component {
         );
       } else {
         return (
-          this.state.posts && (
+          this.state.businesses && (
             <div style={{ width: "100%", maxWidth: 1000 }}>
-              <PostItem post={this.state.posts} />
+              <PostItem busi={this.state.businesses} />
             </div>
           )
         );
@@ -64,14 +44,8 @@ class MainPage extends Component {
     };
 
     return (
-      <Grid
-        container
-        spacing={24}
-        direction="column"
-        alignItems="center"
-        justify="center"
-      >
-        {posts()}
+      <Grid container direction="column" alignItems="center" justify="center">
+        {busiItems()}
       </Grid>
     );
   }

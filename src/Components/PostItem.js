@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import { Grid, Card, CardContent, Typography } from "@material-ui/core/";
+import { Grid } from "@material-ui/core/";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 import "../App.css";
-import { Link, Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class PostItem extends Component {
   constructor(props) {
@@ -16,12 +15,11 @@ export default class PostItem extends Component {
   }
 
   render() {
-    console.log(this.props.post);
-    const busi = this.props.post;
+    const busi = this.props.busi;
     return (
       <Grid container direction="column" alignItems="center" justify="center">
         <h3>PLACES</h3>
-        <TableContainer component={Paper}>
+        <TableContainer>
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
@@ -33,19 +31,19 @@ export default class PostItem extends Component {
             </TableHead>
             <TableBody>
               {busi.map((row) => (
-                <TableRow key={row.name}>
-                  <TableCell align="left">{row.businessId}</TableCell>
+                <TableRow key={row.id}>
+                  <TableCell align="left">{row.id}</TableCell>
                   <TableCell align="left">
                     <Link
                       to={{
-                        pathname: `/places/${row.businessId}`,
+                        pathname: `/places/${row.id}`,
                         state: { data: row },
                       }}
                     >
-                      {row.businessName}
+                      {row.name}
                     </Link>
                   </TableCell>
-                  <TableCell align="left">{row.website}</TableCell>
+                  <TableCell align="left">{row.website_url}</TableCell>
                   <TableCell align="left">{row.address}</TableCell>
                 </TableRow>
               ))}
