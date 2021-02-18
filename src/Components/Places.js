@@ -44,16 +44,15 @@ function Places(props) {
             <div className="name">
               <b>Hours:</b>
               {
-                <ul>
-                  {Object.entries(data.hours).map(function (keyName, keyValue) {
+                <div>
+                  {Object.entries(data.hours).map(([keys, value]) => {
                     return (
-                      <li key={keyName}>
-                        {keyName}
-                        {keyValue}
-                      </li>
+                      <div id="hrsList" key={keys}>
+                        {keys} : {value}
+                      </div>
                     );
                   })}
-                </ul>
+                </div>
               }
             </div>
           </Grid>
