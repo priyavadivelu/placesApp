@@ -30,17 +30,14 @@ function Places(props) {
               <b>Name:</b>
               {data.name}
             </div>
-
             <div className="name">
               <b>Address:</b>
               {data.address}
             </div>
-
             <div className="name">
               <b>Website:</b>
               {data.website_url}
             </div>
-
             <div className="name">
               <b>Hours:</b>
               {
